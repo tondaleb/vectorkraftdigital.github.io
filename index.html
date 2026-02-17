@@ -68,20 +68,19 @@
             text-decoration: none;
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            align-items: flex-start;
             line-height: 1;
         }
-
-        .logo span { color: var(--accent); }
 
         .logo em {
             font-family: 'DM Sans', sans-serif;
             font-style: italic;
             font-weight: 300;
-            font-size: 0.85rem;
-            color: var(--white);
-            letter-spacing: 0.22em;
-            margin-top: 1px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.28em;
+            margin-top: 3px;
+            text-transform: lowercase;
         }
 
         .nav-links {
@@ -273,36 +272,6 @@
             color: var(--accent);
         }
 
-        .hero-stats {
-            display: flex;
-            gap: 3rem;
-            margin-top: 4rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            opacity: 0;
-            animation: fadeUp 0.8s ease 1s forwards;
-            flex-wrap: wrap;
-        }
-
-        .stat-num {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
-            color: var(--white);
-            letter-spacing: 0.05em;
-            line-height: 1;
-        }
-
-        .stat-num span { color: var(--accent); }
-
-        .stat-label {
-            font-size: 0.78rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gray-400);
-            margin-top: 0.3rem;
-        }
-
         /* ── SECTION BASE ── */
         section { padding: 100px 5%; position: relative; }
 
@@ -348,10 +317,14 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5px;
             background: rgba(0,201,255,0.08);
             border: 1px solid rgba(0,201,255,0.08);
+        }
+
+        @media (max-width: 700px) {
+            .services-grid { grid-template-columns: 1fr; }
         }
 
         .service-card {
@@ -430,10 +403,8 @@
 
         /* ── ABOUT ── */
         #about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
+            display: block;
+            max-width: 800px;
         }
 
         .about-visual {
@@ -734,20 +705,19 @@
             color: var(--white);
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            align-items: flex-start;
             line-height: 1;
         }
-
-        .footer-logo span { color: var(--accent); }
 
         .footer-logo em {
             font-family: 'DM Sans', sans-serif;
             font-style: italic;
             font-weight: 300;
-            font-size: 0.78rem;
-            color: var(--white);
-            letter-spacing: 0.22em;
-            margin-top: 1px;
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.28em;
+            margin-top: 3px;
+            text-transform: lowercase;
         }
 
         .footer-copy {
@@ -781,12 +751,17 @@
         }
 
         .reveal {
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
             transition: all 0.7s ease;
         }
 
-        .reveal.visible {
+        .reveal.hidden {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .reveal.hidden.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -810,7 +785,6 @@
             #about { grid-template-columns: 1fr; gap: 3rem; }
             .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
             .form-row { grid-template-columns: 1fr; }
-            .hero-stats { gap: 2rem; }
             .about-pillars { grid-template-columns: 1fr; }
         }
 
@@ -825,7 +799,7 @@
 
 <!-- NAV -->
 <nav id="navbar">
-    <a href="#home" class="logo"><span>Vector<span style="color:var(--accent)">Kraft</span></span><em>digital</em></a>
+    <a href="#home" class="logo">VectorKraft<em>digital</em></a>
     <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
@@ -859,24 +833,7 @@
             <a href="#services" class="btn-primary">Explore Services</a>
             <a href="#contact" class="btn-secondary">Start a Conversation</a>
         </div>
-        <div class="hero-stats">
-            <div>
-                <div class="stat-num">50<span>+</span></div>
-                <div class="stat-label">Projects Delivered</div>
-            </div>
-            <div>
-                <div class="stat-num">15<span>+</span></div>
-                <div class="stat-label">Industries Served</div>
-            </div>
-            <div>
-                <div class="stat-num">98<span>%</span></div>
-                <div class="stat-label">Client Satisfaction</div>
-            </div>
-            <div>
-                <div class="stat-num">8<span>+</span></div>
-                <div class="stat-label">Years Experience</div>
-            </div>
-        </div>
+
     </div>
 </section>
 
@@ -889,89 +846,54 @@
         thrive in an increasingly complex digital landscape.
     </p>
     <div class="services-grid reveal">
-        <!-- Web Design & Development -->
+
+        <!-- Enterprise Transformation -->
         <div class="service-card">
             <div class="service-number">01</div>
             <div class="service-icon">
                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="4" y="10" width="40" height="28" rx="2" stroke="#00C9FF" stroke-width="2"/>
-                    <path d="M4 16h40" stroke="#00C9FF" stroke-width="2"/>
-                    <path d="M9 13h2M14 13h2" stroke="#00C9FF" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M17 24l-5 4 5 4M31 24l5 4-5 4M22 34l4-12" stroke="#00C9FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="6" y="18" width="36" height="24" rx="1" stroke="#00C9FF" stroke-width="2"/>
+                    <path d="M16 18V12a8 8 0 0116 0v6" stroke="#00C9FF" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 28h36" stroke="#00C9FF" stroke-width="2"/>
+                    <path d="M20 28v4M28 28v4" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="24" cy="22" r="2" fill="#00C9FF" fill-opacity="0.3" stroke="#00C9FF" stroke-width="1.5"/>
                 </svg>
             </div>
-            <h3>Web Design & Development</h3>
-            <p class="service-desc">Crafting performant, accessible, and visually stunning web experiences that convert visitors into customers and reflect your brand's true potential.</p>
+            <h3>Enterprise Transformation</h3>
+            <p class="service-desc">Large-scale organisational change programs that modernise enterprise systems, operating models, and culture — turning complexity into competitive advantage at every layer of your business.</p>
             <div class="service-tags">
-                <span class="tag">UI/UX</span>
-                <span class="tag">React</span>
-                <span class="tag">Performance</span>
-                <span class="tag">Accessibility</span>
-            </div>
-        </div>
-
-        <!-- Digital Strategy -->
-        <div class="service-card">
-            <div class="service-number">02</div>
-            <div class="service-icon">
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 36L18 24l8 8 8-10 6 6" stroke="#00C9FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="38" cy="12" r="4" stroke="#00C9FF" stroke-width="2"/>
-                    <path d="M38 16v4M34.5 13.5L32 16M38 8v-4M41.5 10.5L44 8" stroke="#00C9FF" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <h3>Digital Strategy</h3>
-            <p class="service-desc">Data-driven roadmaps and strategic frameworks that align your digital investments with business objectives, ensuring sustainable competitive advantage.</p>
-            <div class="service-tags">
-                <span class="tag">Roadmapping</span>
-                <span class="tag">Analytics</span>
-                <span class="tag">Competitive Analysis</span>
+                <span class="tag">Operating Model</span>
+                <span class="tag">Change Management</span>
+                <span class="tag">Modernisation</span>
+                <span class="tag">Governance</span>
             </div>
         </div>
 
         <!-- Responsible AI -->
         <div class="service-card">
-            <div class="service-number">03</div>
+            <div class="service-number">02</div>
             <div class="service-icon">
                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="24" cy="24" r="10" stroke="#00C9FF" stroke-width="2"/>
                     <circle cx="24" cy="24" r="4" fill="#00C9FF" fill-opacity="0.2" stroke="#00C9FF" stroke-width="2"/>
                     <path d="M24 8v6M24 34v6M8 24h6M34 24h6" stroke="#00C9FF" stroke-width="2" stroke-linecap="round"/>
                     <path d="M13 13l4 4M31 31l4 4M13 35l4-4M31 17l4-4" stroke="#00C9FF" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M20 24l2.5 2.5L28 20" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
             <h3>Responsible AI</h3>
-            <p class="service-desc">Implementing AI solutions ethically and transparently. We help organizations adopt AI practices that are fair, accountable, explainable, and aligned with human values.</p>
+            <p class="service-desc">Implementing AI solutions ethically and transparently. We help organisations adopt AI practices that are fair, accountable, explainable, and deeply aligned with human values and regulatory standards.</p>
             <div class="service-tags">
                 <span class="tag">AI Ethics</span>
-                <span class="tag">Governance</span>
+                <span class="tag">AI Governance</span>
                 <span class="tag">ML Integration</span>
+                <span class="tag">Explainability</span>
             </div>
         </div>
 
-        <!-- Digital Transformation -->
+        <!-- Digital Product Delivery -->
         <div class="service-card">
-            <div class="service-number">04</div>
-            <div class="service-icon">
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 36V28M20 36V20M28 36V24M36 36V14" stroke="#00C9FF" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M8 40h32" stroke="#00C9FF" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M36 14l-6 4-8-3-8 5" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="36" cy="14" r="2" fill="#F5A623"/>
-                </svg>
-            </div>
-            <h3>Digital Transformation</h3>
-            <p class="service-desc">End-to-end transformation programs that reimagine business processes, culture, and customer experiences through technology-enabled change management.</p>
-            <div class="service-tags">
-                <span class="tag">Process Design</span>
-                <span class="tag">Change Mgmt</span>
-                <span class="tag">Cloud</span>
-            </div>
-        </div>
-
-        <!-- Digital Product Management -->
-        <div class="service-card">
-            <div class="service-number">05</div>
+            <div class="service-number">03</div>
             <div class="service-icon">
                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="8" y="8" width="14" height="14" rx="1" stroke="#00C9FF" stroke-width="2"/>
@@ -979,66 +901,47 @@
                     <rect x="8" y="26" width="14" height="14" rx="1" stroke="#00C9FF" stroke-width="2"/>
                     <rect x="26" y="26" width="14" height="14" rx="1" stroke="#F5A623" stroke-width="2"/>
                     <path d="M30 33l3 3 5-6" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 33l3 3 5-6" stroke="#00C9FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
-            <h3>Digital Product Management</h3>
-            <p class="service-desc">Building and scaling digital products with user-centric methodologies. From discovery to launch and beyond, we guide your product to market success.</p>
+            <h3>Digital Product Delivery</h3>
+            <p class="service-desc">End-to-end delivery of digital products — from discovery and design to engineering and launch. We bring cross-functional teams and proven agile practices to ship products that users love and businesses rely on.</p>
             <div class="service-tags">
-                <span class="tag">Agile</span>
-                <span class="tag">Discovery</span>
-                <span class="tag">Product Strategy</span>
+                <span class="tag">Agile Delivery</span>
+                <span class="tag">Product Design</span>
+                <span class="tag">Engineering</span>
+                <span class="tag">Go-to-Market</span>
             </div>
         </div>
 
         <!-- Experience Transformation -->
         <div class="service-card">
-            <div class="service-number">06</div>
+            <div class="service-number">04</div>
             <div class="service-icon">
                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24 8C15.2 8 8 15.2 8 24s7.2 16 16 16 16-7.2 16-16" stroke="#00C9FF" stroke-width="2" stroke-linecap="round"/>
                     <path d="M32 8l4 4-4 4" stroke="#00C9FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="24" cy="24" r="6" stroke="#00C9FF" stroke-width="2"/>
-                    <path d="M21 27l2 2 5-5" stroke="#00C9FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 28s1.5-3 8-3 8 3 8 3" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="19" cy="22" r="2" fill="#00C9FF" fill-opacity="0.3" stroke="#00C9FF" stroke-width="1.5"/>
+                    <circle cx="29" cy="22" r="2" fill="#00C9FF" fill-opacity="0.3" stroke="#00C9FF" stroke-width="1.5"/>
                 </svg>
             </div>
             <h3>Experience Transformation</h3>
-            <p class="service-desc">Reimagining customer and employee journeys through human-centred design, combining research, design thinking, and technology to create memorable experiences.</p>
+            <p class="service-desc">Reimagining customer and employee journeys through human-centred design. We combine deep research, design thinking, and emerging technology to craft memorable, high-impact digital experiences.</p>
             <div class="service-tags">
                 <span class="tag">CX Design</span>
-                <span class="tag">Research</span>
+                <span class="tag">User Research</span>
                 <span class="tag">Design Thinking</span>
+                <span class="tag">Service Design</span>
             </div>
         </div>
+
     </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-    <div class="about-visual reveal">
-        <div class="about-box">
-            <div class="about-metric">
-                <div class="about-metric-num">10+</div>
-                <div class="about-metric-info">
-                    <h4>Years of Digital Expertise</h4>
-                    <p>Deep experience across industries from fintech to healthcare, retail to government.</p>
-                </div>
-            </div>
-            <div class="about-metric">
-                <div class="about-metric-num">50+</div>
-                <div class="about-metric-info">
-                    <h4>Successful Transformations</h4>
-                    <p>Delivered measurable impact for organizations ranging from startups to enterprises.</p>
-                </div>
-            </div>
-            <div class="about-metric">
-                <div class="about-metric-num">100%</div>
-                <div class="about-metric-info">
-                    <h4>Committed to Responsible Practice</h4>
-                    <p>Every solution we build prioritizes ethics, accessibility, and long-term sustainability.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="about-text reveal">
         <div class="section-tag">Who We Are</div>
         <h2>Built for the Complexity of Modern Business</h2>
@@ -1181,11 +1084,9 @@
                 <label for="service">Service of Interest</label>
                 <select id="service">
                     <option value="">Select a service...</option>
-                    <option>Web Design & Development</option>
-                    <option>Digital Strategy</option>
+                    <option>Enterprise Transformation</option>
                     <option>Responsible AI</option>
-                    <option>Digital Transformation</option>
-                    <option>Digital Product Management</option>
+                    <option>Digital Product Delivery</option>
                     <option>Experience Transformation</option>
                     <option>Not sure yet</option>
                 </select>
@@ -1205,7 +1106,7 @@
 <!-- FOOTER -->
 <footer>
     <div class="footer-inner">
-        <div class="footer-logo"><span>Vector<span style="color:var(--accent)">Kraft</span></span><em>digital</em></div>
+        <div class="footer-logo">VectorKraft<em>digital</em></div>
         <p class="footer-copy">© 2025 VectorKraft Digital. All rights reserved.</p>
         <ul class="footer-links">
             <li><a href="#home">Home</a></li>
@@ -1226,14 +1127,18 @@
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => el.classList.add('hidden'));
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
             if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add('visible'), i * 100);
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.remove('hidden');
+                }, i * 100);
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
     reveals.forEach(el => observer.observe(el));
 
     // Nav shadow on scroll
